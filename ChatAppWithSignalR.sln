@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatAppWithSignalR.Client", "ChatAppWithSignalR.Client\ChatAppWithSignalR.Client.csproj", "{54485787-24AB-4934-B581-2B2B19B3D5F1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatAppWithSignalR.Api", "ChatAppWithSignalR.Api\ChatAppWithSignalR.Api.csproj", "{267A7708-BA64-45C6-9F4A-FB8FDFC64F20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatAppWithSignalR.Shared", "ChatAppWithSignalR.Shared\ChatAppWithSignalR.Shared.csproj", "{1969C843-D98B-4510-A8F8-A20A32DE0DE1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54485787-24AB-4934-B581-2B2B19B3D5F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54485787-24AB-4934-B581-2B2B19B3D5F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54485787-24AB-4934-B581-2B2B19B3D5F1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{54485787-24AB-4934-B581-2B2B19B3D5F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54485787-24AB-4934-B581-2B2B19B3D5F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54485787-24AB-4934-B581-2B2B19B3D5F1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{267A7708-BA64-45C6-9F4A-FB8FDFC64F20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{267A7708-BA64-45C6-9F4A-FB8FDFC64F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{267A7708-BA64-45C6-9F4A-FB8FDFC64F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{267A7708-BA64-45C6-9F4A-FB8FDFC64F20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1969C843-D98B-4510-A8F8-A20A32DE0DE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1969C843-D98B-4510-A8F8-A20A32DE0DE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1969C843-D98B-4510-A8F8-A20A32DE0DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1969C843-D98B-4510-A8F8-A20A32DE0DE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF2266BF-7F9D-43E9-A132-A34718BC1DDF}
+	EndGlobalSection
+EndGlobal
