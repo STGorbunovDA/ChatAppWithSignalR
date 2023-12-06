@@ -7,11 +7,7 @@ global using Microsoft.AspNetCore.Mvc.Filters;
 global using Microsoft.AspNetCore.Mvc;
 global using ChatAppWithSignalR.Api.Helpers;
 global using Microsoft.AspNetCore.SignalR;
-
 using ChatAppWithSignalR.Api.Controllers.ChatHub;
-using ChatAppWithSignalR.Api.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 
 namespace ChatAppWithSignalR.Api
