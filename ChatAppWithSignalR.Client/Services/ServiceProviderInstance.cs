@@ -1,4 +1,4 @@
-﻿using ChatAppWithSignalR.Client.Services.Authenticate;
+﻿using ChatAppWithSignalR.Client.Helpers;
 using ChatAppWithSignalR.Shared;
 using Newtonsoft.Json;
 using System.Text;
@@ -9,8 +9,8 @@ namespace ChatAppWithSignalR.Client.Services
     {
         private static ServiceProviderInstance _instance;
 
-        private string _serverRootUrl = "https://localhost:7259";
         public string _accessToken = "";
+       
         private ServiceProviderInstance() { }
 
         public static ServiceProviderInstance GetInstance()
@@ -23,11 +23,13 @@ namespace ChatAppWithSignalR.Client.Services
 
         public async Task<AuthenticateResponse> Authenticate(AuthenticateRequest request)
         {
-            using (HttpClient client = new HttpClient())
+            var devSslHelper = new DevHttpsConnectionHelper(sslPort: 7259);
+
+            using (HttpClient client = devSslHelper.HttpClient)
             {
                 var httpRequestMessage = new HttpRequestMessage();
                 httpRequestMessage.Method = HttpMethod.Post;
-                httpRequestMessage.RequestUri = new Uri(_serverRootUrl + "/Authenticate/Authenticate");
+                httpRequestMessage.RequestUri = new Uri(devSslHelper.DevServerRootUrl + "/Authenticate/Authenticate");
 
                 if (request != null)
                 {
@@ -54,7 +56,7 @@ namespace ChatAppWithSignalR.Client.Services
                     var result = new AuthenticateResponse
                     {
                         StatusCode = 500,
-                        StatusMessage = ex.Message
+                        StatusMessage = ex.ToString(),
                     };
                     return result;
                 }

@@ -31,17 +31,28 @@ namespace ChatAppWithSignalR.Client.ViewModels
 
         private ServiceProviderInstance _serviceProvider;
 
-        public ICommand LoginCommand { get; set; }
+        public ICommand LoginCommand { get; }
 
-        public LoginPageViewModel(ServiceProviderInstance serviceProvider)
+        // ServiceProviderInstance serviceProvider
+        public LoginPageViewModel()
         {
             UserName = "wanda";
             Password = "Abc12345";
             IsProcessing = false;
-            _serviceProvider = serviceProvider;
+            //_serviceProvider = serviceProvider;
 
-            LoginCommand = new ViewModelCommand(ExecuteIsProcessingCommand);
-           
+            LoginCommand = new Command(() =>
+            {
+                if (IsProcessing) return;
+
+                if (UserName.Trim() == "" || Password.Trim() == "") return;
+
+                IsProcessing = true;
+                Login().GetAwaiter().OnCompleted(() =>
+                {
+                    IsProcessing = false;
+                });
+            });
         }
 
         private void ExecuteIsProcessingCommand(object obj)
@@ -68,16 +79,29 @@ namespace ChatAppWithSignalR.Client.ViewModels
                     Password = Password,
                 };
 
-                var response = await _serviceProvider.Authenticate(request);
+                var response = await ServiceProviderInstance.GetInstance().Authenticate(request);
 
                 if (response.StatusCode == 200)
                 {
-                    await Shell.Current.GoToAsync($"ListChatPage?userId={response.Id}");
+                    await AppShell.Current.DisplayAlert("ChatApp", 
+                        $"Login sucessful! \n" + 
+                        $"UserName: {response.UserName} \n" + 
+                        $"Token: {response.Token}", "OR");
                 }
                 else
                 {
                     await Shell.Current.DisplayAlert("ChatApp", response.StatusMessage, "OK");
                 }
+                    
+
+                //if (response.StatusCode == 200)
+                //{
+                //    await Shell.Current.GoToAsync($"ListChatPage?userId={response.Id}");
+                //}
+                //else
+                //{
+                //    await Shell.Current.DisplayAlert("ChatApp", response.StatusMessage, "OK");
+                //}
             }
             catch (Exception ex)
             {

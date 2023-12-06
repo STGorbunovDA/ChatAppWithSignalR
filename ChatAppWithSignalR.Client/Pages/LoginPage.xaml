@@ -2,8 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ChatAppWithSignalR.Client.Pages.LoginPage"
+             xmlns:viewModel="clr-namespace:ChatAppWithSignalR.Client.ViewModels"
              Title="LoginPage"
              Background="#13232f">
+    
+    <ContentPage.BindingContext>
+        <viewModel:LoginPageViewModel/>
+    </ContentPage.BindingContext>
+    
     <Grid>
         <VerticalStackLayout Margin="30" VerticalOptions="Center">
             <Label 
@@ -82,5 +88,11 @@
                     TextColor="#1e90ff" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
+
+        <ActivityIndicator
+            HeightRequest="60"
+            IsRunning="{Binding IsProcessing}"
+            WidthRequest="60" />
+        
     </Grid>
 </ContentPage>

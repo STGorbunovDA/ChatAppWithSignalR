@@ -13,7 +13,6 @@ namespace ChatAppWithSignalR.Client.ViewModels.Base
         public ViewModelCommand(Action<object> executeAction)
         {
             _executeAction = executeAction;
-            _canExecuteAction = null;
         }
 
         public ViewModelCommand(Action<object> executeAction,
